@@ -5,13 +5,13 @@ import { MobileNav } from './MobileNav';
 
 /**
  * Kerangka halaman publik: navbar + konten + footer + FAB + bottom-nav mobile.
- * pb-16 di mobile memberi ruang agar konten tidak tertutup bottom-nav.
+ * pb-24 di mobile memberi ruang agar konten tidak tertutup floating bottom-nav.
  */
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-dvh flex-col">
       <Navbar />
-      <main className="flex-1 pb-16 md:pb-0">{children}</main>
+      <main className="flex-1 pb-24 md:pb-0">{children}</main>
       <Footer />
       <Fab />
       <MobileNav />
