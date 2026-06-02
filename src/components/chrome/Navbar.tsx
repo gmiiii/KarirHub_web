@@ -1,12 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { clsx } from '@/lib/clsx';
 import { Icon } from '../Icon';
 import { ButtonLink } from '../ui/Button';
-import { AvatarInitial } from '../Placeholder';
-import { useAuth, roleMeta } from '@/lib/auth';
+import { AccountMenu } from './AccountMenu';
+import { useAuth } from '@/lib/auth';
 
 const links = [
   { href: '/lowongan', label: 'Lowongan' },
@@ -17,8 +17,7 @@ const links = [
 
 export function Navbar() {
   const pathname = usePathname();
-  const router = useRouter();
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
 
   const utilityIcons = (
@@ -83,33 +82,7 @@ export function Navbar() {
         <div className="ml-auto flex items-center gap-md">
           {utilityIcons}
           {user ? (
-            <>
-              <Link
-                href={roleMeta[user.role].home}
-                className="flex items-center gap-2 rounded-full border border-outline-variant py-1 pl-1 pr-3 transition-colors hover:border-primary/40"
-              >
-                <AvatarInitial name={user.name} className="h-8 w-8 text-caption" />
-                <span className="hidden text-left leading-tight sm:block">
-                  <span className="block max-w-[120px] truncate text-label-md font-semibold text-on-surface">
-                    {user.name}
-                  </span>
-                  <span className="block text-caption text-on-surface-variant">
-                    {roleMeta[user.role].label}
-                  </span>
-                </span>
-              </Link>
-              <button
-                type="button"
-                onClick={() => {
-                  logout();
-                  router.push('/');
-                }}
-                aria-label="Keluar"
-                className="rounded-full p-2 text-on-surface-variant transition-colors hover:bg-surface-container-low hover:text-error"
-              >
-                <Icon name="logout" />
-              </button>
-            </>
+            <AccountMenu activeRole={user.role} />
           ) : (
             <>
               <ButtonLink href="/masuk" variant="ghost" size="sm">

@@ -1,6 +1,7 @@
 import { SiteChrome } from '@/components/chrome/SiteChrome';
 import { Icon } from '@/components/Icon';
 import { JobCard } from '@/components/cards/JobCard';
+import { ScrollReveal } from '@/components/motion/ScrollReveal';
 import { jobs, jobTypes, experiences } from '@/lib/data';
 
 export const metadata = { title: 'Lowongan Kerja — KarirHub' };
@@ -59,7 +60,9 @@ export default function JobBoardPage() {
           </div>
           <div className="space-y-md">
             {jobs.map((job) => (
-              <JobCard key={job.id} job={job} />
+              <ScrollReveal key={job.id} y={16}>
+                <JobCard job={job} />
+              </ScrollReveal>
             ))}
           </div>
           <Pagination />

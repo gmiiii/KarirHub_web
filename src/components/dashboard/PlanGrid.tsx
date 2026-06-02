@@ -1,11 +1,12 @@
 import { Icon } from '@/components/Icon';
 import { Button } from '@/components/ui/Button';
+import { ScrollReveal } from '@/components/motion/ScrollReveal';
 import { formatRupiah, type SellerPlan } from '@/lib/data';
 
 /** Grid kartu paket langganan — dipakai langganan seller & paket premium rekruter. */
 export function PlanGrid({ plans }: { plans: SellerPlan[] }) {
   return (
-    <div className="grid items-start gap-lg md:grid-cols-3">
+    <ScrollReveal as="div" stagger className="grid items-start gap-lg md:grid-cols-3">
       {plans.map((p) => (
         <div
           key={p.name}
@@ -46,6 +47,6 @@ export function PlanGrid({ plans }: { plans: SellerPlan[] }) {
           </Button>
         </div>
       ))}
-    </div>
+    </ScrollReveal>
   );
 }

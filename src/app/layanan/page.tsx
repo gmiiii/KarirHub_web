@@ -1,6 +1,7 @@
 import { SiteChrome } from '@/components/chrome/SiteChrome';
 import { Icon } from '@/components/Icon';
 import { ServiceCard } from '@/components/cards/ServiceCard';
+import { ScrollReveal } from '@/components/motion/ScrollReveal';
 import { services, serviceCategories } from '@/lib/data';
 
 export const metadata = { title: 'Jasa Karir — KarirHub' };
@@ -52,7 +53,9 @@ export default function LayananPage() {
 
         <div className="grid grid-cols-2 gap-md md:grid-cols-3 lg:grid-cols-4">
           {services.map((s) => (
-            <ServiceCard key={s.id} service={s} />
+            <ScrollReveal key={s.id} y={16}>
+              <ServiceCard service={s} />
+            </ScrollReveal>
           ))}
         </div>
       </div>

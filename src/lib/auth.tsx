@@ -57,6 +57,8 @@ interface AuthContextValue {
   ready: boolean;
   login: (user: AuthUser) => void;
   logout: () => void;
+  /** Ganti peran aktif tanpa logout (Model A: satu akun, banyak peran/mode). */
+  switchRole: (role: Role) => void;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -93,8 +95,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  const switchRole = useCallback((role: Role) => {
+    setUser((prev) => {
+      if (!prev || prev.role === role) return prev;
+      const next = { ...prev, role };
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      } catch {
+        /* abaikan */
+      }
+      return next;
+    });
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user, ready, login, logout }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, ready, login, logout, switchRole }}>
+      {children}
+    </AuthContext.Provider>
   );
 }
 
