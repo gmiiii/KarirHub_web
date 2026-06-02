@@ -6,6 +6,7 @@ import { JobCard } from '@/components/cards/JobCard';
 import { ServiceCard } from '@/components/cards/ServiceCard';
 import { AvatarInitial } from '@/components/Placeholder';
 import { StarRating } from '@/components/ui/StarRating';
+import { ScrollReveal } from '@/components/motion/ScrollReveal';
 import { jobs, services, serviceCategories } from '@/lib/data';
 
 export default function HomePage() {
@@ -50,7 +51,7 @@ export default function HomePage() {
 
       {/* Kategori jasa */}
       <section className="mx-auto max-w-app px-lg py-2xl">
-        <div className="mb-lg flex items-end justify-between">
+        <ScrollReveal as="div" className="mb-lg flex items-end justify-between">
           <div>
             <h2 className="text-headline-md text-on-surface">Jasa karir populer</h2>
             <p className="mt-1 text-body-md text-on-surface-variant">
@@ -60,8 +61,8 @@ export default function HomePage() {
           <Link href="/layanan" className="hidden text-label-md font-semibold text-primary hover:underline sm:block">
             Lihat semua →
           </Link>
-        </div>
-        <div className="stagger-rise grid grid-cols-2 gap-md md:grid-cols-3 lg:grid-cols-6">
+        </ScrollReveal>
+        <ScrollReveal as="div" stagger className="grid grid-cols-2 gap-md md:grid-cols-3 lg:grid-cols-6">
           {serviceCategories.map((c) => (
             <Link
               key={c.id}
@@ -74,44 +75,44 @@ export default function HomePage() {
               <span className="text-label-md font-medium text-on-surface">{c.label}</span>
             </Link>
           ))}
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Lowongan terbaru */}
       <section className="bg-surface-container-low py-2xl">
         <div className="mx-auto max-w-app px-lg">
-          <div className="mb-lg flex items-end justify-between">
+          <ScrollReveal as="div" className="mb-lg flex items-end justify-between">
             <h2 className="text-headline-md text-on-surface">Lowongan terbaru</h2>
             <Link href="/lowongan" className="text-label-md font-semibold text-primary hover:underline">
               Semua lowongan →
             </Link>
-          </div>
-          <div className="grid gap-md md:grid-cols-2">
+          </ScrollReveal>
+          <ScrollReveal as="div" stagger className="grid gap-md md:grid-cols-2">
             {jobs.slice(0, 4).map((job) => (
               <JobCard key={job.id} job={job} />
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Jasa unggulan */}
       <section className="mx-auto max-w-app px-lg py-2xl">
-        <div className="mb-lg flex items-end justify-between">
+        <ScrollReveal as="div" className="mb-lg flex items-end justify-between">
           <h2 className="text-headline-md text-on-surface">Jasa unggulan</h2>
           <Link href="/layanan" className="text-label-md font-semibold text-primary hover:underline">
             Jelajahi marketplace →
           </Link>
-        </div>
-        <div className="grid grid-cols-2 gap-md md:grid-cols-4">
+        </ScrollReveal>
+        <ScrollReveal as="div" stagger className="grid grid-cols-2 gap-md md:grid-cols-4">
           {services.slice(0, 4).map((s) => (
             <ServiceCard key={s.id} service={s} />
           ))}
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* CTA seller */}
       <section className="mx-auto max-w-app px-lg pb-2xl">
-        <div className="flex flex-col items-center gap-lg rounded-xl bg-inverse-surface px-lg py-2xl text-center text-inverse-on-surface md:flex-row md:justify-between md:text-left">
+        <ScrollReveal as="div" className="flex flex-col items-center gap-lg rounded-xl bg-inverse-surface px-lg py-2xl text-center text-inverse-on-surface md:flex-row md:justify-between md:text-left">
           <div className="max-w-xl space-y-2">
             <h2 className="text-headline-md font-bold">Punya keahlian karir? Jadi seller.</h2>
             <p className="text-body-md text-inverse-on-surface/80">
@@ -122,7 +123,7 @@ export default function HomePage() {
           <ButtonLink href="/langganan" variant="tonal" size="lg" icon="storefront">
             Mulai berjualan
           </ButtonLink>
-        </div>
+        </ScrollReveal>
       </section>
     </SiteChrome>
   );

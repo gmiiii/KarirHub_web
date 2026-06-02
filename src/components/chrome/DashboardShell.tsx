@@ -1,11 +1,13 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { clsx } from '@/lib/clsx';
 import { Icon } from '../Icon';
 import { AvatarInitial } from '../Placeholder';
-import { useAuth } from '@/lib/auth';
+import { AccountMenu } from './AccountMenu';
+import { useAuth, roleMeta } from '@/lib/auth';
 
 export type DashRole = 'rekruter' | 'seller';
 
@@ -41,7 +43,13 @@ export function DashboardShell({
 }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, logout } = useAuth();
+  const { user, logout, ready } = useAuth();
+  // Tiap role independen: user yang login dengan peran lain dialihkan ke home-nya.
+  // Hanya bisa masuk dashboard ini dengan berganti ke mode yang sesuai.
+  const mismatch = ready && !!user && user.role !== role;
+  useEffect(() => {
+    if (mismatch && user) router.replace(roleMeta[user.role].home);
+  }, [mismatch, user, router]);
   const nav = navByRole[role];
   // Pakai nama sesi (jika login), jatuh ke nama contoh per peran.
   const name = user?.name ?? (role === 'rekruter' ? 'PT. Teknologi Masa Depan' : 'Dewi Lestari');
@@ -50,6 +58,8 @@ export function DashboardShell({
     logout();
     router.push('/');
   };
+
+  if (mismatch) return null; // sedang dialihkan ke home peran yang benar
 
   return (
     <div className="flex min-h-dvh bg-surface-container-low">
@@ -106,7 +116,7 @@ export function DashboardShell({
               <Icon name="notifications" />
               <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-error ring-2 ring-surface-container-lowest" />
             </button>
-            <AvatarInitial name={name} className="h-9 w-9 text-label-md" />
+            <AccountMenu activeRole={role} fallbackName={name} />
           </div>
         </header>
 

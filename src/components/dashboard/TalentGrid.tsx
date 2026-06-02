@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { StarRating } from '@/components/ui/StarRating';
 import { AvatarInitial } from '@/components/Placeholder';
+import { ScrollReveal } from '@/components/motion/ScrollReveal';
 import { talents } from '@/lib/data';
 
 /** Filter + grid kandidat talent pool. Presentational, tanpa chrome. */
@@ -37,8 +38,10 @@ export function TalentGrid() {
         </div>
         <div className="grid gap-md sm:grid-cols-2">
           {talents.map((t) => (
-            <article
+            <ScrollReveal
               key={t.name}
+              as="article"
+              y={16}
               className="rounded-xl border border-outline-variant bg-surface-container-lowest p-lg transition-[transform,box-shadow] duration-200 ease-out-quint hover:-translate-y-0.5 hover:shadow-level-2"
             >
               <div className="flex items-start gap-md">
@@ -77,7 +80,7 @@ export function TalentGrid() {
                   Hubungi
                 </Button>
               </div>
-            </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>
