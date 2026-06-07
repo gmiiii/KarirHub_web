@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Placeholder } from '@/components/Placeholder';
 import { formatRupiah } from '@/lib/data';
 
-export const metadata = { title: 'Pembayaran — KarirHub' };
+export const metadata = { title: 'Pembayaran - KarirHub' };
 
 const item = { title: 'Review CV profesional + optimasi ATS', seller: 'Dewi Lestari', pkg: 'Standar', price: 150000, color: '#2563eb' };
 const fee = 2500;

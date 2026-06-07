@@ -42,7 +42,7 @@ export const roleMeta: Record<
   },
 };
 
-/** Nama contoh per peran — selaras dengan data dummy dashboard. */
+/** Nama contoh per peran - selaras dengan data dummy dashboard. */
 export const defaultNameByRole: Record<Role, string> = {
   pencari: 'Rina Hapsari',
   seller: 'Dewi Lestari',
@@ -72,7 +72,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) setUser(JSON.parse(raw) as AuthUser);
     } catch {
-      /* localStorage tak tersedia — abaikan, mulai sebagai tamu */
+      /* localStorage tak tersedia - abaikan, mulai sebagai tamu */
     }
     setReady(true);
   }, []);

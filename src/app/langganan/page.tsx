@@ -4,7 +4,7 @@ import { Placeholder } from '@/components/Placeholder';
 import { PlanGrid } from '@/components/dashboard/PlanGrid';
 import { sellerPlans } from '@/lib/data';
 
-export const metadata = { title: 'Langganan Seller — KarirHub' };
+export const metadata = { title: 'Langganan Seller - KarirHub' };
 
 export default function LanggananPage() {
   return (

@@ -3,7 +3,7 @@ import { Icon } from '@/components/Icon';
 import { Button } from '@/components/ui/Button';
 import { formatRupiah } from '@/lib/data';
 
-export const metadata = { title: 'AI Foto CV — KarirHub' };
+export const metadata = { title: 'AI Foto CV - KarirHub' };
 
 const guide = [
   'Pencahayaan yang baik dan merata',

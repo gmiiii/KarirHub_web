@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/Badge';
 import { AvatarInitial } from '@/components/Placeholder';
 import { recruiterStats, applicants } from '@/lib/data';
 
-export const metadata = { title: 'Dashboard Rekruter — KarirHub' };
+export const metadata = { title: 'Dashboard Rekruter - KarirHub' };
 
 const statusTone = { Baru: 'info', Review: 'warning', Shortlist: 'verified' } as const;
 

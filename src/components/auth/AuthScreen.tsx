@@ -50,7 +50,7 @@ export function AuthScreen({ mode }: { mode: 'login' | 'register' }) {
 
   return (
     <div className="grid min-h-dvh lg:grid-cols-2">
-      {/* Panel brand (kiri) — biru penuh, teks putih (kontras aman) */}
+      {/* Panel brand (kiri) - biru penuh, teks putih (kontras aman) */}
       <aside className="relative hidden flex-col justify-between overflow-hidden bg-primary-container p-2xl text-on-primary lg:flex">
         <div
           aria-hidden

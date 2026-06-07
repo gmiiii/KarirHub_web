@@ -14,7 +14,7 @@ const items = [
 ];
 
 /**
- * Bottom nav mobile — floating pill bar dengan highlight yang meluncur antar item.
+ * Bottom nav mobile - floating pill bar dengan highlight yang meluncur antar item.
  * Highlight (bg-primary-fixed) selaras dengan active pill di top navbar.
  */
 export function MobileNav() {

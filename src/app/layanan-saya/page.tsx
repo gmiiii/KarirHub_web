@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Placeholder } from '@/components/Placeholder';
 import { myServices, services, formatRupiah } from '@/lib/data';
 
-export const metadata = { title: 'Layanan Saya — KarirHub' };
+export const metadata = { title: 'Layanan Saya - KarirHub' };
 
 export default function MyServicesPage() {
   return (

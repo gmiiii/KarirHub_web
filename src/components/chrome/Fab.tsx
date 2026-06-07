@@ -1,6 +1,6 @@
 import { Icon } from '../Icon';
 
-/** Floating Action Button — bantuan/chat (DESIGN.md: bottom-right, biru). */
+/** Floating Action Button - bantuan/chat (DESIGN.md: bottom-right, biru). */
 export function Fab() {
   return (
     <button

@@ -2,7 +2,7 @@ import { DashboardShell } from '@/components/chrome/DashboardShell';
 import { PlanGrid } from '@/components/dashboard/PlanGrid';
 import { recruiterPlans } from '@/lib/data';
 
-export const metadata = { title: 'Paket Premium — Dashboard Rekruter — KarirHub' };
+export const metadata = { title: 'Paket Premium - Dashboard Rekruter - KarirHub' };
 
 export default function RecruiterPaketPage() {
   return (

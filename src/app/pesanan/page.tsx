@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/Badge';
 import { AvatarInitial } from '@/components/Placeholder';
 import { incomingOrders, formatRupiah } from '@/lib/data';
 
-export const metadata = { title: 'Pesanan Masuk — KarirHub' };
+export const metadata = { title: 'Pesanan Masuk - KarirHub' };
 
 const orderTone = { Menunggu: 'warning', Dikerjakan: 'info', Selesai: 'verified' } as const;
 const tabs = ['Semua', 'Menunggu', 'Dikerjakan', 'Selesai'];

@@ -1,24 +1,24 @@
-# KarirHub — Web
+# KarirHub - Web
 
 Front-end statis **KarirHub**, platform karir Indonesia yang menggabungkan **job board**
 (cari & lamar lowongan, pasang lowongan & kelola pelamar) dan **marketplace jasa karir**
 ala Fiverr (review CV, AI foto CV, coaching interview, dll). Status: front-end statis dengan
-data dummy — belum ada backend/database, jadi semua interaksi (login, checkout, lamar) masih
+data dummy - belum ada backend/database, jadi semua interaksi (login, checkout, lamar) masih
 bersifat tampilan.
 
 Aplikasi mobile-nya ada di repo terpisah: **KarirHub_mobile** (Expo / React Native).
 
 ## Fitur utama
 
-- **Job board** — daftar lowongan dengan filter tipe & pengalaman, halaman detail lowongan,
+- **Job board** - daftar lowongan dengan filter tipe & pengalaman, halaman detail lowongan,
   dan alur pasang lowongan untuk rekruter.
-- **Marketplace jasa** — katalog layanan karir berkategori, halaman detail dengan tab,
+- **Marketplace jasa** - katalog layanan karir berkategori, halaman detail dengan tab,
   serta alur checkout.
-- **AI Foto CV** — halaman khusus untuk layanan unggulan pembuatan foto CV.
-- **Dua dashboard** — area **rekruter** (talenta, paket, transaksi) dan area **seller**
+- **AI Foto CV** - halaman khusus untuk layanan unggulan pembuatan foto CV.
+- **Dua dashboard** - area **rekruter** (talenta, paket, transaksi) dan area **seller**
   (layanan saya, langganan, transaksi).
-- **Auth tampilan** — halaman masuk, daftar, dan profil (state lokal, tanpa server).
-- **Talent pool** — halaman `/talenta` untuk menelusuri kandidat.
+- **Auth tampilan** - halaman masuk, daftar, dan profil (state lokal, tanpa server).
+- **Talent pool** - halaman `/talenta` untuk menelusuri kandidat.
 
 ## Stack
 
@@ -91,7 +91,7 @@ KarirHub_web/
 ## Design token
 
 [`tokens.js`](tokens.js) adalah satu sumber kebenaran untuk warna, spacing, radius, tipografi,
-shadow, dan font — di-`require` oleh [`tailwind.config.ts`](tailwind.config.ts). File yang sama
+shadow, dan font - di-`require` oleh [`tailwind.config.ts`](tailwind.config.ts). File yang sama
 disinkronkan ke repo **KarirHub_mobile** agar tampilan kedua platform identik. Jangan hardcode
 hex di komponen; pakai class token (`bg-primary`, `text-on-surface`, `p-lg`, dst).
 
@@ -119,4 +119,4 @@ menjadi pemanggilan API tanpa mengubah komponen.
 
 ---
 
-Tugas Besar — Manajemen Basis Data, Rekayasa Perangkat Lunak.
+Tugas Besar - Manajemen Basis Data, Rekayasa Perangkat Lunak.

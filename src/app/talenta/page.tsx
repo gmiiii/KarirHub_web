@@ -1,7 +1,7 @@
 import { SiteChrome } from '@/components/chrome/SiteChrome';
 import { TalentGrid } from '@/components/dashboard/TalentGrid';
 
-export const metadata = { title: 'Cari Talenta — KarirHub' };
+export const metadata = { title: 'Cari Talenta - KarirHub' };
 
 export default function TalentPoolPage() {
   return (

@@ -3,7 +3,7 @@ import './globals.css';
 import { AuthProvider } from '@/lib/auth';
 
 export const metadata: Metadata = {
-  title: 'KarirHub — Selangkah Menuju Sukses',
+  title: 'KarirHub - Selangkah Menuju Sukses',
   description:
     'Platform karir Indonesia: cari lowongan kerja dan jasa karir profesional (review CV, AI foto CV, coaching) dalam satu tempat.',
 };

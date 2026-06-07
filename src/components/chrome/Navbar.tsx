@@ -65,7 +65,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Search — anchor pencarian marketplace */}
+        {/* Search - anchor pencarian marketplace */}
         <form
           role="search"
           className="hidden h-11 max-w-md flex-1 items-center gap-sm rounded-full border border-outline-variant bg-surface-container px-md transition-colors focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 lg:flex"

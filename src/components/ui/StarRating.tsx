@@ -1,7 +1,7 @@
 import { clsx } from '@/lib/clsx';
 import { Icon } from '../Icon';
 
-/** Rating bintang — amber terisi, abu kosong (DESIGN.md). */
+/** Rating bintang - amber terisi, abu kosong (DESIGN.md). */
 export function StarRating({
   value,
   reviews,

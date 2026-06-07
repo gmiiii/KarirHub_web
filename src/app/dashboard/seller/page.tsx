@@ -4,7 +4,7 @@ import { ButtonLink } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { sellerStats, incomingOrders, formatRupiah } from '@/lib/data';
 
-export const metadata = { title: 'Dashboard Seller — KarirHub' };
+export const metadata = { title: 'Dashboard Seller - KarirHub' };
 
 const orderTone = { Menunggu: 'warning', Dikerjakan: 'info', Selesai: 'verified' } as const;
 

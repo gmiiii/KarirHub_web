@@ -42,7 +42,7 @@ type ScrollRevealProps = {
 /**
  * Bungkus konten agar fade + rise saat masuk viewport (scroll reveal) via
  * GSAP ScrollTrigger. Menghormati prefers-reduced-motion (tampil penuh tanpa
- * gating) dan aman untuk SSR — konten tidak pernah disembunyikan permanen.
+ * gating) dan aman untuk SSR - konten tidak pernah disembunyikan permanen.
  */
 export function ScrollReveal({
   children,

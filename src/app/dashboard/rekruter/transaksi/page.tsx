@@ -1,7 +1,7 @@
 import { DashboardShell } from '@/components/chrome/DashboardShell';
 import { TransactionPanel } from '@/components/dashboard/TransactionPanel';
 
-export const metadata = { title: 'Transaksi — Dashboard Rekruter — KarirHub' };
+export const metadata = { title: 'Transaksi - Dashboard Rekruter - KarirHub' };
 
 export default function RecruiterTransaksiPage() {
   return (

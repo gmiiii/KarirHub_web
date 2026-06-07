@@ -11,7 +11,7 @@ interface PlaceholderProps {
 }
 
 /**
- * Placeholder gambar — SEMUA gambar di proyek ini memakai placeholder (belum ada aset).
+ * Placeholder gambar - SEMUA gambar di proyek ini memakai placeholder (belum ada aset).
  * Menampilkan blok berwarna + ikon, bukan gambar kosong, agar layout tetap jelas.
  */
 export function Placeholder({

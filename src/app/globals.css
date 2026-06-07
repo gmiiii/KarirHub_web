@@ -47,7 +47,7 @@ p {
 }
 
 @layer utilities {
-  /* Entrance reveals — enhance already-visible content (no visibility gating) */
+  /* Entrance reveals - enhance already-visible content (no visibility gating) */
   @keyframes kh-rise {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: none; }
@@ -63,7 +63,7 @@ p {
     animation: kh-fade 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
-  /* Staggered entrance — cascade children in (emil: 30-80ms between items).
+  /* Staggered entrance - cascade children in (emil: 30-80ms between items).
      Each child reveals from an already-shaped state (scale 0.98 + translateY),
      never from scratch. Delays are short so the UI never feels slow. */
   .stagger-rise > * {
@@ -88,7 +88,7 @@ p {
   }
 }
 
-/* Reduced motion — wajib (panduan impeccable) */
+/* Reduced motion - wajib (panduan impeccable) */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

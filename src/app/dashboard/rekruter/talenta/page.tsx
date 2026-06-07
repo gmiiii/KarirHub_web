@@ -1,7 +1,7 @@
 import { DashboardShell } from '@/components/chrome/DashboardShell';
 import { TalentGrid } from '@/components/dashboard/TalentGrid';
 
-export const metadata = { title: 'Cari Talenta — Dashboard Rekruter — KarirHub' };
+export const metadata = { title: 'Cari Talenta - Dashboard Rekruter - KarirHub' };
 
 export default function RecruiterTalentaPage() {
   return (

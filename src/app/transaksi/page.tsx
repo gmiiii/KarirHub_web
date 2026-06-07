@@ -1,7 +1,7 @@
 import { SiteChrome } from '@/components/chrome/SiteChrome';
 import { TransactionPanel } from '@/components/dashboard/TransactionPanel';
 
-export const metadata = { title: 'Riwayat Transaksi — KarirHub' };
+export const metadata = { title: 'Riwayat Transaksi - KarirHub' };
 
 export default function TransactionsPage() {
   return (
