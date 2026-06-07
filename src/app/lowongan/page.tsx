@@ -1,10 +1,12 @@
 import { SiteChrome } from '@/components/chrome/SiteChrome';
 import { Icon } from '@/components/Icon';
+import { Checkbox } from '@/components/ui/Checkbox';
+import { Select } from '@/components/ui/Select';
 import { JobCard } from '@/components/cards/JobCard';
 import { ScrollReveal } from '@/components/motion/ScrollReveal';
 import { jobs, jobTypes, experiences } from '@/lib/data';
 
-export const metadata = { title: 'Lowongan Kerja — KarirHub' };
+export const metadata = { title: 'Lowongan Kerja - KarirHub' };
 
 export default function JobBoardPage() {
   return (
@@ -49,14 +51,10 @@ export default function JobBoardPage() {
             <span className="text-body-md text-on-surface-variant">
               Menampilkan <span className="font-semibold text-on-surface">{jobs.length}</span> lowongan
             </span>
-            <label className="flex items-center gap-2 text-label-md text-on-surface-variant">
-              Urutkan:
-              <select className="cursor-pointer rounded-lg border border-outline-variant bg-surface-container-lowest px-2 py-1 font-medium text-primary outline-none">
-                <option>Terbaru</option>
-                <option>Gaji tertinggi</option>
-                <option>Paling relevan</option>
-              </select>
-            </label>
+            <div className="flex items-center gap-2 text-label-md text-on-surface-variant">
+              <span>Urutkan:</span>
+              <Select ariaLabel="Urutkan lowongan" options={['Terbaru', 'Gaji tertinggi', 'Paling relevan']} />
+            </div>
           </div>
           <div className="space-y-md">
             {jobs.map((job) => (
@@ -86,14 +84,7 @@ function FilterGroup({
       <h3 className="text-label-md font-bold uppercase tracking-wider text-on-surface">{title}</h3>
       <div className="space-y-sm">
         {options.map((opt) => (
-          <label key={opt} className="group flex cursor-pointer items-center gap-sm">
-            <input
-              type="checkbox"
-              defaultChecked={defaultChecked.includes(opt)}
-              className="h-5 w-5 rounded border-outline-variant text-primary focus:ring-primary"
-            />
-            <span className="text-body-md transition-colors group-hover:text-primary">{opt}</span>
-          </label>
+          <Checkbox key={opt} label={opt} defaultChecked={defaultChecked.includes(opt)} />
         ))}
       </div>
     </div>

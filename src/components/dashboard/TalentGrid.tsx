@@ -1,6 +1,7 @@
 import { Icon } from '@/components/Icon';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { Checkbox } from '@/components/ui/Checkbox';
 import { StarRating } from '@/components/ui/StarRating';
 import { AvatarInitial } from '@/components/Placeholder';
 import { ScrollReveal } from '@/components/motion/ScrollReveal';
@@ -21,7 +22,7 @@ export function TalentGrid() {
             />
           </label>
           <FilterGroup title="Keahlian" options={['React', 'Figma', 'Python', 'SEO', 'TypeScript']} />
-          <FilterGroup title="Pengalaman" options={['1–3 Tahun', '3–5 Tahun', '5+ Tahun']} />
+          <FilterGroup title="Pengalaman" options={['1-3 Tahun', '3-5 Tahun', '5+ Tahun']} />
           <FilterGroup
             title="Status"
             options={['Terbuka untuk peluang']}
@@ -102,14 +103,7 @@ function FilterGroup({
       <h3 className="text-label-md font-bold uppercase tracking-wider text-on-surface">{title}</h3>
       <div className="space-y-sm">
         {options.map((opt) => (
-          <label key={opt} className="group flex cursor-pointer items-center gap-sm">
-            <input
-              type="checkbox"
-              defaultChecked={defaultChecked.includes(opt)}
-              className="h-5 w-5 rounded border-outline-variant text-primary focus:ring-primary"
-            />
-            <span className="text-body-md transition-colors group-hover:text-primary">{opt}</span>
-          </label>
+          <Checkbox key={opt} label={opt} defaultChecked={defaultChecked.includes(opt)} />
         ))}
       </div>
     </div>

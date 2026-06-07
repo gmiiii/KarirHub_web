@@ -1,9 +1,10 @@
 import { DashboardShell } from '@/components/chrome/DashboardShell';
 import { Icon } from '@/components/Icon';
 import { Button } from '@/components/ui/Button';
+import { Select } from '@/components/ui/Select';
 import { jobTypes, experiences } from '@/lib/data';
 
-export const metadata = { title: 'Pasang Lowongan — KarirHub' };
+export const metadata = { title: 'Pasang Lowongan - KarirHub' };
 
 export default function PostJobPage() {
   return (
@@ -95,14 +96,10 @@ function Field({ label, type = 'text', placeholder, required, prefix }: { label:
 
 function SelectField({ label, options }: { label: string; options: string[] }) {
   return (
-    <label className="block">
+    <div className="block">
       <Label label={label} />
-      <select className={inputCls}>
-        {options.map((o) => (
-          <option key={o}>{o}</option>
-        ))}
-      </select>
-    </label>
+      <Select variant="field" fullWidth ariaLabel={label} options={options} />
+    </div>
   );
 }
 
