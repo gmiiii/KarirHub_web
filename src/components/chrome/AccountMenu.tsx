@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { clsx } from '@/lib/clsx';
 import { Icon } from '../Icon';
@@ -50,7 +51,7 @@ export function AccountMenu({
     setOpen(false);
     if (user) switchRole(role);
     else login({ name: defaultNameByRole[role], email: `${role}@demo.karirhub.id`, role });
-    // replace — tiap role "dunia" terpisah; tak ada back ke role sebelumnya.
+    // replace - tiap role "dunia" terpisah; tak ada back ke role sebelumnya.
     router.replace(roleMeta[role].home);
   };
 
@@ -84,15 +85,40 @@ export function AccountMenu({
           role="menu"
           className="absolute right-0 top-[calc(100%+8px)] z-[var(--z-dropdown)] w-72 overflow-hidden rounded-xl border border-outline-variant bg-surface-container-lowest p-1 shadow-level-3"
         >
-          <div className="flex items-center gap-3 px-3 py-3">
+          <Link
+            href="/profil"
+            role="menuitem"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-3 rounded-lg px-3 py-3 transition-colors hover:bg-surface-container-low"
+          >
             <AvatarInitial name={name} className="h-10 w-10 text-label-md" />
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <p className="truncate text-label-md font-semibold text-on-surface">{name}</p>
               <p className="truncate text-caption text-on-surface-variant">
                 {user?.email ?? `Mode ${roleMeta[currentRole].short}`}
               </p>
             </div>
-          </div>
+            <Icon name="chevron_right" size={18} className="text-on-surface-variant" />
+          </Link>
+
+          <div className="my-1 h-px bg-outline-variant" />
+          {[
+            { href: '/profil', icon: 'account_circle', label: 'Profil Saya' },
+            { href: '/cv-saya', icon: 'description', label: 'CV Saya' },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface-container-low"
+            >
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-surface-container-high text-primary">
+                <Icon name={item.icon} size={20} />
+              </span>
+              <span className="text-label-md font-medium text-on-surface">{item.label}</span>
+            </Link>
+          ))}
 
           <div className="my-1 h-px bg-outline-variant" />
           <p className="px-3 py-1.5 text-caption font-medium uppercase tracking-wider text-on-surface-variant">
