@@ -50,56 +50,58 @@ export default function ServiceDetailPage({ params }: { params: { id: string } }
             <ServiceTabs service={service} />
           </div>
 
-          {/* Sidebar penawaran */}
-          <aside className="space-y-md">
-            <div className="rounded-xl border border-outline-variant bg-surface-container-lowest p-lg lg:sticky lg:top-24">
-              <h1 className="text-title-lg font-bold leading-snug text-on-surface">{service.title}</h1>
-              <div className="mt-sm flex flex-wrap items-center gap-x-md gap-y-2">
-                <span className="flex items-center gap-2">
-                  <AvatarInitial name={service.seller} className="h-7 w-7 text-[11px]" color={service.thumbColor} />
-                  <span className="text-label-md font-semibold text-primary">{service.seller}</span>
-                </span>
-                {service.verified && <VerifiedBadge label="" />}
-                <StarRating value={service.rating} reviews={service.reviews} size={14} />
-              </div>
-
-              <div className="mt-lg flex items-center justify-between border-t border-outline-variant pt-md">
-                <span className="text-body-md text-on-surface-variant">Harga layanan</span>
-                <span className="text-title-lg font-bold tabular-nums text-primary">{formatRupiah(featured.price)}</span>
-              </div>
-
-              <dl className="mt-md space-y-sm rounded-lg bg-surface-container-low p-md text-label-md">
-                <div className="flex items-center gap-2">
-                  <Icon name="schedule" size={18} className="text-on-surface-variant" />
-                  <dt className="text-on-surface-variant">Estimasi:</dt>
-                  <dd className="font-semibold text-on-surface">{service.deliveryDays} hari kerja</dd>
+          {/* Sidebar penawaran - sticky sebagai satu kesatuan mengikuti scroll kiri */}
+          <aside>
+            <div className="space-y-md lg:sticky lg:top-24">
+              <div className="rounded-xl border border-outline-variant bg-surface-container-lowest p-lg">
+                <h1 className="text-title-lg font-bold leading-snug text-on-surface">{service.title}</h1>
+                <div className="mt-sm flex flex-wrap items-center gap-x-md gap-y-2">
+                  <span className="flex items-center gap-2">
+                    <AvatarInitial name={service.seller} className="h-7 w-7 text-[11px]" color={service.thumbColor} />
+                    <span className="text-label-md font-semibold text-primary">{service.seller}</span>
+                  </span>
+                  {service.verified && <VerifiedBadge label="" />}
+                  <StarRating value={service.rating} reviews={service.reviews} size={14} />
                 </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="autorenew" size={18} className="text-on-surface-variant" />
-                  <dt className="text-on-surface-variant">Revisi:</dt>
-                  <dd className="font-semibold text-on-surface">Maks. 2 kali</dd>
+
+                <div className="mt-lg flex items-center justify-between border-t border-outline-variant pt-md">
+                  <span className="text-body-md text-on-surface-variant">Harga layanan</span>
+                  <span className="text-title-lg font-bold tabular-nums text-primary">{formatRupiah(featured.price)}</span>
                 </div>
-              </dl>
 
-              <div className="mt-lg space-y-sm">
-                <ButtonLink href="/checkout" fullWidth icon="shopping_cart">Pesan Sekarang</ButtonLink>
-                <Button variant="secondary" fullWidth icon="chat">Hubungi {service.seller.split(' ')[0]}</Button>
+                <dl className="mt-md space-y-sm rounded-lg bg-surface-container-low p-md text-label-md">
+                  <div className="flex items-center gap-2">
+                    <Icon name="schedule" size={18} className="text-on-surface-variant" />
+                    <dt className="text-on-surface-variant">Estimasi:</dt>
+                    <dd className="font-semibold text-on-surface">{service.deliveryDays} hari kerja</dd>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Icon name="autorenew" size={18} className="text-on-surface-variant" />
+                    <dt className="text-on-surface-variant">Revisi:</dt>
+                    <dd className="font-semibold text-on-surface">Maks. 2 kali</dd>
+                  </div>
+                </dl>
+
+                <div className="mt-lg space-y-sm">
+                  <ButtonLink href="/checkout" fullWidth icon="shopping_cart">Pesan Sekarang</ButtonLink>
+                  <Button variant="secondary" fullWidth icon="chat">Hubungi {service.seller.split(' ')[0]}</Button>
+                </div>
+                <p className="mt-sm text-center text-caption text-on-surface-variant">
+                  Pembayaran aman dengan Jaminan KarirHub.
+                </p>
               </div>
-              <p className="mt-sm text-center text-caption text-on-surface-variant">
-                Pembayaran aman dengan Jaminan KarirHub.
-              </p>
-            </div>
 
-            {/* Mengapa memilih seller */}
-            <div className="rounded-xl border border-outline-variant bg-surface-container-low p-lg">
-              <h2 className="text-label-md font-bold text-on-surface">Mengapa memilih {service.seller.split(' ')[0]}?</h2>
-              <ul className="mt-md space-y-sm">
-                {reasons.map((r) => (
-                  <li key={r.text} className="flex items-center gap-2 text-body-md text-on-surface-variant">
-                    <Icon name={r.icon} size={20} className="text-primary" /> {r.text}
-                  </li>
-                ))}
-              </ul>
+              {/* Mengapa memilih seller */}
+              <div className="rounded-xl border border-outline-variant bg-surface-container-low p-lg">
+                <h2 className="text-label-md font-bold text-on-surface">Mengapa memilih {service.seller.split(' ')[0]}?</h2>
+                <ul className="mt-md space-y-sm">
+                  {reasons.map((r) => (
+                    <li key={r.text} className="flex items-center gap-2 text-body-md text-on-surface-variant">
+                      <Icon name={r.icon} size={20} className="text-primary" /> {r.text}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </aside>
         </div>

@@ -43,7 +43,7 @@ export function DashboardShell({
 }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, logout, ready } = useAuth();
+  const { user, ready } = useAuth();
   // Tiap role independen: user yang login dengan peran lain dialihkan ke home-nya.
   // Hanya bisa masuk dashboard ini dengan berganti ke mode yang sesuai.
   const mismatch = ready && !!user && user.role !== role;
@@ -54,10 +54,6 @@ export function DashboardShell({
   // Pakai nama sesi (jika login), jatuh ke nama contoh per peran.
   const name = user?.name ?? (role === 'rekruter' ? 'PT. Teknologi Masa Depan' : 'Dewi Lestari');
   const roleLabel = role === 'rekruter' ? 'Rekruter' : 'Seller';
-  const handleLogout = () => {
-    logout();
-    router.push('/');
-  };
 
   if (mismatch) return null; // sedang dialihkan ke home peran yang benar
 
@@ -95,11 +91,9 @@ export function DashboardShell({
         </nav>
         <div className="flex items-center gap-md border-t border-outline-variant p-md">
           <AvatarInitial name={name} className="h-9 w-9 text-label-md" />
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <p className="truncate text-label-md font-semibold text-on-surface">{name}</p>
-            <button onClick={handleLogout} className="text-caption text-primary hover:underline">
-              Keluar
-            </button>
+            <p className="truncate text-caption text-on-surface-variant">{roleLabel}</p>
           </div>
         </div>
       </aside>
