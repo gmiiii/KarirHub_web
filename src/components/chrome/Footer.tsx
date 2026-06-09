@@ -28,9 +28,9 @@ const groups = [
   {
     title: 'Bantuan',
     links: [
-      { href: '#', label: 'Pusat Bantuan' },
-      { href: '#', label: 'Ketentuan Layanan' },
-      { href: '#', label: 'Kebijakan Privasi' },
+      { href: '/bantuan', label: 'Pusat Bantuan' },
+      { href: '/ketentuan', label: 'Ketentuan Layanan' },
+      { href: '/kebijakan-privasi', label: 'Kebijakan Privasi' },
     ],
   },
 ];
