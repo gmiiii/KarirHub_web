@@ -1,6 +1,6 @@
 import { DashboardShell } from '@/components/chrome/DashboardShell';
 import { Icon } from '@/components/Icon';
-import { Button } from '@/components/ui/Button';
+import { ToastButton } from '@/components/ui/ActionButtons';
 import { Badge } from '@/components/ui/Badge';
 import { AvatarInitial } from '@/components/Placeholder';
 import { incomingOrders, formatRupiah } from '@/lib/data';
@@ -48,11 +48,11 @@ export default function IncomingOrdersPage() {
                 <Icon name="schedule" size={16} /> Tenggat: {o.due}
               </span>
               <div className="flex gap-sm">
-                <Button variant="ghost" size="sm" icon="chat">Chat</Button>
+                <ToastButton variant="ghost" size="sm" icon="chat" message={`Membuka chat dengan ${o.buyer}`} tone="info">Chat</ToastButton>
                 {o.status === 'Selesai' ? (
-                  <Button variant="secondary" size="sm" icon="download">Unduh hasil</Button>
+                  <ToastButton variant="secondary" size="sm" icon="download" message="Hasil pesanan diunduh">Unduh hasil</ToastButton>
                 ) : (
-                  <Button size="sm" icon="check">Tandai selesai</Button>
+                  <ToastButton size="sm" icon="check" message={`Pesanan ${o.id} ditandai selesai`}>Tandai selesai</ToastButton>
                 )}
               </div>
             </div>

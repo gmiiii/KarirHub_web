@@ -2,7 +2,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { SiteChrome } from '@/components/chrome/SiteChrome';
 import { Icon } from '@/components/Icon';
-import { Button, ButtonLink } from '@/components/ui/Button';
+import { ButtonLink } from '@/components/ui/Button';
+import { ToggleButton } from '@/components/ui/ActionButtons';
 import { Badge, VerifiedBadge } from '@/components/ui/Badge';
 import { Placeholder } from '@/components/Placeholder';
 import { JobCard } from '@/components/cards/JobCard';
@@ -78,7 +79,12 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
               <p className="mt-1 text-caption text-outline">Diposting {job.postedAgo}</p>
               <div className="mt-lg space-y-sm">
                 <ButtonLink href="/profil" fullWidth icon="send">Lamar Sekarang</ButtonLink>
-                <Button variant="secondary" fullWidth icon="bookmark">Simpan Lowongan</Button>
+                <ToggleButton
+                  variant="secondary"
+                  fullWidth
+                  onState={{ label: 'Tersimpan', icon: 'bookmark', message: 'Lowongan disimpan' }}
+                  offState={{ label: 'Simpan Lowongan', icon: 'bookmark_border', message: 'Lowongan dihapus dari simpanan' }}
+                />
               </div>
               <p className="mt-md text-caption text-on-surface-variant">
                 Tingkatkan peluang lolos dengan{' '}

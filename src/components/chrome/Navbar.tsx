@@ -1,10 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { clsx } from '@/lib/clsx';
 import { Icon } from '../Icon';
 import { ButtonLink } from '../ui/Button';
+import { useToast } from '../ui/Toast';
 import { AccountMenu } from './AccountMenu';
 import { useAuth } from '@/lib/auth';
 
@@ -18,7 +20,10 @@ const links = [
 
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const toast = useToast();
   const { user } = useAuth();
+  const [search, setSearch] = useState('');
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
 
   const utilityIcons = (
@@ -33,6 +38,7 @@ export function Navbar() {
       <button
         type="button"
         aria-label="Notifikasi"
+        onClick={() => toast('Belum ada notifikasi baru', 'info')}
         className="rounded-full p-2 text-on-surface-variant transition-colors hover:bg-surface-container-low"
       >
         <Icon name="notifications" />
@@ -69,11 +75,18 @@ export function Navbar() {
         {/* Search - anchor pencarian marketplace */}
         <form
           role="search"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const q = search.trim();
+            router.push(q ? `/layanan?q=${encodeURIComponent(q)}` : '/layanan');
+          }}
           className="hidden h-11 max-w-md flex-1 items-center gap-sm rounded-full border border-outline-variant bg-surface-container px-md transition-colors focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 lg:flex"
         >
           <Icon name="search" className="text-on-surface-variant" />
           <input
             type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Cari layanan profesional..."
             aria-label="Cari layanan"
             className="w-full bg-transparent text-body-md text-on-surface outline-none placeholder:text-on-surface-variant"

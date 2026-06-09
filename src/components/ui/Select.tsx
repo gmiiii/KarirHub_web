@@ -20,6 +20,7 @@ const triggerVariants: Record<Variant, string> = {
 export function Select({
   options,
   defaultValue,
+  value: controlledValue,
   onChange,
   ariaLabel,
   variant = 'inline',
@@ -28,13 +29,16 @@ export function Select({
 }: {
   options: string[];
   defaultValue?: string;
+  /** Bila diisi, Select bekerja sebagai komponen terkontrol. */
+  value?: string;
   onChange?: (value: string) => void;
   ariaLabel?: string;
   variant?: Variant;
   fullWidth?: boolean;
   className?: string;
 }) {
-  const [value, setValue] = useState(defaultValue ?? options[0]);
+  const [internalValue, setInternalValue] = useState(defaultValue ?? options[0]);
+  const value = controlledValue ?? internalValue;
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -53,7 +57,7 @@ export function Select({
   }, [open]);
 
   const choose = (opt: string) => {
-    setValue(opt);
+    setInternalValue(opt);
     setOpen(false);
     onChange?.(opt);
   };

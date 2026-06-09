@@ -1,5 +1,5 @@
 import { Icon } from '@/components/Icon';
-import { Button } from '@/components/ui/Button';
+import { ToastButton } from '@/components/ui/ActionButtons';
 import { Badge } from '@/components/ui/Badge';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { StarRating } from '@/components/ui/StarRating';
@@ -74,12 +74,12 @@ export function TalentGrid() {
                 ))}
               </div>
               <div className="mt-md flex gap-sm">
-                <Button variant="secondary" size="sm" icon="visibility" className="flex-1">
+                <ToastButton variant="secondary" size="sm" icon="visibility" className="flex-1" tone="info" message={`Membuka profil ${t.name}`}>
                   Lihat Profil
-                </Button>
-                <Button size="sm" icon="mail" className="flex-1">
+                </ToastButton>
+                <ToastButton size="sm" icon="mail" className="flex-1" message={`Pesan terkirim ke ${t.name}`}>
                   Hubungi
-                </Button>
+                </ToastButton>
               </div>
             </ScrollReveal>
           ))}

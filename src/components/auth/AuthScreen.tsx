@@ -139,7 +139,7 @@ export function AuthScreen({ mode }: { mode: 'login' | 'register' }) {
 
             {isLogin && (
               <div className="flex justify-end">
-                <Link href="#" className="text-label-md font-medium text-primary hover:underline">
+                <Link href="/lupa-password" className="text-label-md font-medium text-primary hover:underline">
                   Lupa sandi?
                 </Link>
               </div>

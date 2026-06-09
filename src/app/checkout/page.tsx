@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { SiteChrome } from '@/components/chrome/SiteChrome';
 import { Icon } from '@/components/Icon';
-import { Button } from '@/components/ui/Button';
+import { ToastButton } from '@/components/ui/ActionButtons';
 import { Placeholder } from '@/components/Placeholder';
 import { formatRupiah } from '@/lib/data';
 
@@ -89,7 +89,9 @@ export default function CheckoutPage() {
                 <span className="text-label-md font-semibold text-on-surface">Total</span>
                 <span className="text-title-lg font-bold tabular-nums text-primary">{formatRupiah(total)}</span>
               </div>
-              <Button fullWidth size="lg" icon="lock" className="mt-lg">Bayar Sekarang</Button>
+              <ToastButton fullWidth size="lg" icon="lock" className="mt-lg" message="Pembayaran berhasil. Terima kasih!" navigateTo="/transaksi">
+                Bayar Sekarang
+              </ToastButton>
               <p className="mt-sm flex items-center justify-center gap-1 text-caption text-on-surface-variant">
                 <Icon name="verified_user" size={14} className="text-tertiary" /> Pembayaran aman & terenkripsi
               </p>

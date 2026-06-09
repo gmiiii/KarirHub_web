@@ -8,6 +8,7 @@ import { StarRating } from '@/components/ui/StarRating';
 import { ScrollReveal } from '@/components/motion/ScrollReveal';
 import CardSwap, { Card } from '@/components/motion/CardSwap';
 import { jobs, services, serviceCategories, formatRupiah } from '@/lib/data';
+import { HomeSearch } from './HomeSearch';
 
 // Kartu showcase untuk hero (CardSwap): ambil 4 jasa + ikon kategorinya.
 const heroCards = services.slice(0, 4).map((s) => ({
@@ -37,19 +38,7 @@ export default function HomePage() {
               Cari lowongan kerja terverifikasi dan tingkatkan peluangmu lewat jasa karir
               profesional: review CV, AI foto formal, sampai latihan interview.
             </p>
-            <form className="flex flex-col gap-2 rounded-xl bg-surface-container-lowest p-2 shadow-level-2 sm:flex-row">
-              <label className="flex flex-1 items-center gap-2 px-md">
-                <Icon name="search" className="text-outline" />
-                <input
-                  className="w-full border-0 bg-transparent py-3 text-body-md outline-none placeholder:text-on-surface-variant"
-                  placeholder="Posisi, perusahaan, atau jasa"
-                  aria-label="Kata kunci pencarian"
-                />
-              </label>
-              <ButtonLink href="/lowongan" size="lg" icon="search">
-                Cari
-              </ButtonLink>
-            </form>
+            <HomeSearch />
             <p className="text-caption text-on-primary-container">
               Populer: UI/UX Designer, Data Analyst, Review CV, Buat CV AI
             </p>
