@@ -83,8 +83,8 @@ export function BuatCvAi() {
         name,
         headline,
         location,
-        // Pasfoto formal hasil AI (disimulasikan dengan foto contoh).
-        photo: cvData.photo,
+        // Pasfoto formal hasil AI (disimulasikan dengan foto wajah yang diunggah).
+        photo: inputPhoto ?? cvData.photo,
         contact: { email, phone, linkedin },
         about: generateAbout(headline, location, skillList),
         skills: skillList,
@@ -163,9 +163,9 @@ export function BuatCvAi() {
         <div className="space-y-lg">
           {/* Unggah foto + pilih gaya */}
           <section className="rounded-xl border border-outline-variant bg-surface-container-lowest p-lg">
-            <h2 className="text-title-lg font-semibold text-on-surface">Foto profil</h2>
+            <h2 className="text-title-lg font-semibold text-on-surface">Foto wajah</h2>
             <p className="mt-1 text-body-md text-on-surface-variant">
-              Tidak perlu foto formal. Unggah swafoto biasa, AI akan mengubahnya jadi pasfoto formal.
+              Cukup foto wajah, tidak perlu formal. AI akan mengubahnya jadi pasfoto formal.
             </p>
 
             {inputPhoto ? (
@@ -291,7 +291,7 @@ export function BuatCvAi() {
         {/* Kolom kanan: panduan */}
         <aside className="h-fit rounded-xl border border-outline-variant bg-surface-container-lowest p-lg">
           <h2 className="flex items-center gap-2 text-title-lg text-on-surface">
-            <Icon name="verified" className="text-primary" /> Panduan kualitas foto
+            <Icon name="verified" className="text-primary" /> Panduan foto wajah
           </h2>
           <ul className="mt-md space-y-sm">
             {guide.map((g) => (
