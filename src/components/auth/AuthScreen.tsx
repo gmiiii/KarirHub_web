@@ -6,9 +6,7 @@ import { useRouter } from 'next/navigation';
 import { clsx } from '@/lib/clsx';
 import { Icon } from '@/components/Icon';
 import { Button } from '@/components/ui/Button';
-import { useAuth, roleMeta, defaultNameByRole, type Role } from '@/lib/auth';
-
-const ROLES: Role[] = ['pencari', 'seller', 'rekruter'];
+import { useAuth, defaultNameByRole } from '@/lib/auth';
 
 const PROOF = [
   { icon: 'verified', text: 'Seller & perusahaan terverifikasi' },
@@ -21,7 +19,6 @@ export function AuthScreen({ mode }: { mode: 'login' | 'register' }) {
   const router = useRouter();
   const { login } = useAuth();
 
-  const [role, setRole] = useState<Role>('pencari');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -40,12 +37,14 @@ export function AuthScreen({ mode }: { mode: 'login' | 'register' }) {
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
+    // Satu akun, semua peran. Mulai di mode default (pencari); ganti peran lewat
+    // menu akun ("Ganti mode akun"). Arahkan ke beranda netral, bukan home peran.
     login({
-      name: isLogin ? defaultNameByRole[role] : name.trim(),
+      name: isLogin ? defaultNameByRole.pencari : name.trim(),
       email: email.trim(),
-      role,
+      role: 'pencari',
     });
-    router.push(roleMeta[role].home);
+    router.push('/');
   }
 
   return (
@@ -91,75 +90,11 @@ export function AuthScreen({ mode }: { mode: 'login' | 'register' }) {
           </h1>
           <p className="mt-1 text-body-md text-on-surface-variant">
             {isLogin
-              ? 'Lanjutkan ke ruang kerjamu sesuai peran.'
-              : 'Gratis. Pilih peranmu untuk memulai.'}
+              ? 'Satu akun untuk melamar kerja, jual jasa, dan rekrut talenta.'
+              : 'Gratis. Satu akun untuk semua kebutuhan karirmu.'}
           </p>
 
-          {/* Pemilih peran */}
-          <fieldset className="mt-lg">
-            <legend className="mb-sm text-label-md font-medium text-on-surface">
-              {isLogin ? 'Masuk sebagai' : 'Saya ingin bergabung sebagai'}
-            </legend>
-            {isLogin ? (
-              <div
-                role="tablist"
-                className="flex gap-1 rounded-full border border-outline-variant bg-surface-container p-1"
-              >
-                {ROLES.map((r) => (
-                  <button
-                    key={r}
-                    type="button"
-                    role="tab"
-                    aria-selected={role === r}
-                    onClick={() => setRole(r)}
-                    className={clsx(
-                      'flex-1 rounded-full px-sm py-2 text-label-md font-medium transition-[background-color,color,box-shadow] duration-200 ease-out-quint active:scale-[0.98]',
-                      role === r
-                        ? 'bg-surface-container-lowest text-primary shadow-level-1'
-                        : 'text-on-surface-variant hover:text-on-surface',
-                    )}
-                  >
-                    {roleMeta[r].short}
-                  </button>
-                ))}
-              </div>
-            ) : (
-              <div className="grid gap-sm sm:grid-cols-3">
-                {ROLES.map((r) => {
-                  const active = role === r;
-                  return (
-                    <button
-                      key={r}
-                      type="button"
-                      aria-pressed={active}
-                      onClick={() => setRole(r)}
-                      className={clsx(
-                        'flex flex-col items-start gap-1 rounded-xl border p-md text-left transition-[transform,border-color,background-color] duration-200 ease-out-quint active:scale-[0.98]',
-                        active
-                          ? 'border-primary bg-primary-fixed/50'
-                          : 'border-outline-variant hover:border-primary/40',
-                      )}
-                    >
-                      <span
-                        className={clsx(
-                          'flex h-9 w-9 items-center justify-center rounded-full',
-                          active ? 'bg-primary text-on-primary' : 'bg-primary-fixed text-primary',
-                        )}
-                      >
-                        <Icon name={roleMeta[r].icon} size={20} />
-                      </span>
-                      <span className="text-label-md font-semibold text-on-surface">
-                        {roleMeta[r].label}
-                      </span>
-                      <span className="text-caption text-on-surface-variant">{roleMeta[r].desc}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            )}
-          </fieldset>
-
-          <form onSubmit={handleSubmit} noValidate className="mt-lg space-y-md">
+          <form onSubmit={handleSubmit} noValidate className="mt-xl space-y-md">
             {!isLogin && (
               <Field
                 id="name"

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { clsx } from '@/lib/clsx';
 import { Icon } from './Icon';
 
@@ -37,15 +38,20 @@ export function Placeholder({
   );
 }
 
-/** Avatar inisial untuk orang (placeholder foto profil). */
+/**
+ * Avatar untuk orang. Bila `src` diisi, tampilkan foto asli (object-cover);
+ * jika tidak, fallback ke inisial - sehingga tetap aman tanpa aset.
+ */
 export function AvatarInitial({
   name,
   className,
   color,
+  src,
 }: {
   name: string;
   className?: string;
   color?: string;
+  src?: string;
 }) {
   const initials = name
     .split(' ')
@@ -53,6 +59,19 @@ export function AvatarInitial({
     .map((p) => p[0])
     .join('')
     .toUpperCase();
+
+  if (src) {
+    return (
+      <div
+        className={clsx('relative overflow-hidden rounded-full bg-surface-container-highest', className)}
+        role="img"
+        aria-label={`Foto ${name}`}
+      >
+        <Image src={src} alt={`Foto ${name}`} fill sizes="96px" className="object-cover object-top" />
+      </div>
+    );
+  }
+
   return (
     <div
       className={clsx(

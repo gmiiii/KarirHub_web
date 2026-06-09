@@ -6,7 +6,7 @@ const groups = [
     links: [
       { href: '/lowongan', label: 'Cari Lowongan' },
       { href: '/layanan', label: 'Jasa Karir' },
-      { href: '/ai-foto-cv', label: 'AI Foto CV' },
+      { href: '/ai-foto-cv', label: 'Buat CV dengan AI' },
     ],
   },
   {

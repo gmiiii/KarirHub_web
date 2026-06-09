@@ -7,6 +7,7 @@ import { clsx } from '@/lib/clsx';
 import { Icon } from '../Icon';
 import { AvatarInitial } from '../Placeholder';
 import { useAuth, roleMeta, defaultNameByRole, type Role } from '@/lib/auth';
+import { RINA_PHOTO } from '@/lib/data';
 
 const ORDER: Role[] = ['pencari', 'seller', 'rekruter'];
 
@@ -46,12 +47,14 @@ export function AccountMenu({
 
   const currentRole: Role = activeRole ?? user?.role ?? 'pencari';
   const name = user?.name ?? fallbackName ?? defaultNameByRole[currentRole];
+  // Foto persona hanya untuk mode Pencari Kerja; mode lain memakai inisial.
+  const photo = currentRole === 'pencari' ? RINA_PHOTO : undefined;
 
   const choose = (role: Role) => {
     setOpen(false);
     if (user) switchRole(role);
     else login({ name: defaultNameByRole[role], email: `${role}@demo.karirhub.id`, role });
-    // replace - tiap role "dunia" terpisah; tak ada back ke role sebelumnya.
+    // Gunakan replace agar tiap mode tidak menumpuk di riwayat navigasi.
     router.replace(roleMeta[role].home);
   };
 
@@ -64,7 +67,7 @@ export function AccountMenu({
         aria-expanded={open}
         className="flex items-center gap-2 rounded-full border border-outline-variant py-1 pl-1 pr-2 transition-colors hover:border-primary/40"
       >
-        <AvatarInitial name={name} className="h-8 w-8 text-caption" />
+        <AvatarInitial name={name} src={photo} className="h-8 w-8 text-caption" />
         <span className="hidden text-left leading-tight sm:block">
           <span className="block max-w-[120px] truncate text-label-md font-semibold text-on-surface">
             {name}
@@ -91,7 +94,7 @@ export function AccountMenu({
             onClick={() => setOpen(false)}
             className="flex items-center gap-3 rounded-lg px-3 py-3 transition-colors hover:bg-surface-container-low"
           >
-            <AvatarInitial name={name} className="h-10 w-10 text-label-md" />
+            <AvatarInitial name={name} src={photo} className="h-10 w-10 text-label-md" />
             <div className="min-w-0 flex-1">
               <p className="truncate text-label-md font-semibold text-on-surface">{name}</p>
               <p className="truncate text-caption text-on-surface-variant">

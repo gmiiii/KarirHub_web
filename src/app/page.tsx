@@ -51,7 +51,7 @@ export default function HomePage() {
               </ButtonLink>
             </form>
             <p className="text-caption text-on-primary-container">
-              Populer: UI/UX Designer, Data Analyst, Review CV, AI Foto CV
+              Populer: UI/UX Designer, Data Analyst, Review CV, Buat CV AI
             </p>
 
             {/* Strip bukti sosial */}
@@ -117,7 +117,7 @@ export default function HomePage() {
           {serviceCategories.map((c) => (
             <Link
               key={c.id}
-              href={c.id === 'foto' ? '/ai-foto-cv' : `/layanan?kategori=${c.id}`}
+              href={`/layanan?kategori=${c.id}`}
               className="group flex flex-col items-center gap-sm rounded-xl border border-outline-variant bg-surface-container-lowest p-md text-center transition-[transform,border-color,box-shadow] duration-200 ease-out-quint hover:-translate-y-0.5 hover:border-primary hover:shadow-level-1"
             >
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-fixed text-primary transition-colors group-hover:bg-primary group-hover:text-on-primary">
@@ -126,6 +126,46 @@ export default function HomePage() {
               <span className="text-label-md font-medium text-on-surface">{c.label}</span>
             </Link>
           ))}
+        </ScrollReveal>
+      </section>
+
+      {/* Fitur unggulan: Buat CV dengan AI */}
+      <section className="mx-auto max-w-app px-lg pb-2xl">
+        <ScrollReveal as="div" className="overflow-hidden rounded-2xl bg-primary-container">
+          <div className="grid items-center gap-lg p-xl md:grid-cols-2 md:p-2xl">
+            <div className="space-y-md">
+              <span className="inline-flex items-center gap-2 rounded-full bg-on-primary/15 px-md py-1 text-label-md font-medium text-on-primary-container">
+                <Icon name="auto_awesome" size={18} /> Didukung AI
+              </span>
+              <h2 className="text-headline-lg font-bold text-on-primary-container">
+                Buat CV profesional dengan AI
+              </h2>
+              <p className="max-w-md text-body-lg text-on-primary-container/90">
+                Unggah fotomu dan isi data diri singkat. AI mengubah fotomu jadi pasfoto formal
+                dan menyusun ringkasan CV-mu otomatis dalam hitungan detik.
+              </p>
+              <ButtonLink href="/ai-foto-cv" size="lg" variant="tonal" icon="auto_awesome">
+                Coba sekarang
+              </ButtonLink>
+            </div>
+            <ul className="grid gap-sm">
+              {[
+                { icon: 'photo_camera', text: 'Foto formal dari swafoto, pilih beragam gaya' },
+                { icon: 'edit_note', text: 'Ringkasan & data CV disusun otomatis' },
+                { icon: 'description', text: 'Langsung tersimpan ke CV Saya' },
+              ].map((f) => (
+                <li
+                  key={f.text}
+                  className="flex items-center gap-md rounded-xl bg-surface-container-lowest/95 p-md"
+                >
+                  <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary-fixed text-primary">
+                    <Icon name={f.icon} size={20} />
+                  </span>
+                  <span className="text-body-md font-medium text-on-surface">{f.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </ScrollReveal>
       </section>
 
