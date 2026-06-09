@@ -19,6 +19,7 @@ export default function ProfilePage() {
             agar kontras aman (nama hitam tidak pernah jatuh di atas biru). */}
         <AvatarInitial
           name={cvData.name}
+          src={cvData.photo}
           className="-mt-12 h-24 w-24 border-4 border-surface text-headline-md shadow-level-2"
         />
         <div className="mt-md flex flex-col gap-lg md:flex-row md:items-start md:justify-between">
@@ -105,7 +106,7 @@ export default function ProfilePage() {
               </div>
               <p className="mb-md text-caption text-on-surface-variant">Layanan berbayar dari profesional terverifikasi.</p>
               <ul className="space-y-sm text-body-md text-on-surface-variant">
-                <li><Link href="/ai-foto-cv" className="flex items-center gap-2 hover:text-primary"><Icon name="photo_camera" size={18} /> Perbarui foto dengan AI</Link></li>
+                <li><Link href="/ai-foto-cv" className="flex items-center gap-2 hover:text-primary"><Icon name="auto_awesome" size={18} /> Buat CV dengan AI</Link></li>
                 <li><Link href="/layanan?kategori=cv" className="flex items-center gap-2 hover:text-primary"><Icon name="description" size={18} /> Review CV profesional</Link></li>
                 <li><Link href="/layanan?kategori=linkedin" className="flex items-center gap-2 hover:text-primary"><Icon name="hub" size={18} /> Optimasi LinkedIn</Link></li>
               </ul>

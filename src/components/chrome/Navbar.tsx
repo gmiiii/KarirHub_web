@@ -11,6 +11,7 @@ import { useAuth } from '@/lib/auth';
 const links = [
   { href: '/lowongan', label: 'Lowongan' },
   { href: '/layanan', label: 'Layanan' },
+  { href: '/ai-foto-cv', label: 'Buat CV AI' },
   { href: '/talenta', label: 'Talenta' },
   { href: '/langganan', label: 'Langganan' },
 ];

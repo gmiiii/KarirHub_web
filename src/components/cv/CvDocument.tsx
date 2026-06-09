@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Icon } from '@/components/Icon';
 import type { CvData } from '@/lib/data';
 
@@ -7,6 +8,18 @@ export function CvDocument({ cv }: { cv: CvData }) {
     <article className="mx-auto flex max-w-3xl flex-col overflow-hidden rounded-xl border border-outline-variant bg-surface-container-lowest shadow-level-1 md:flex-row">
       {/* Sidebar */}
       <div className="bg-primary px-lg py-xl text-on-primary md:w-[38%]">
+        {cv.photo && (
+          <div className="relative mb-md aspect-[3/4] w-28 overflow-hidden rounded-lg border-2 border-on-primary/30 bg-on-primary/10">
+            <Image
+              src={cv.photo}
+              alt={`Foto ${cv.name}`}
+              fill
+              sizes="112px"
+              unoptimized={cv.photo.startsWith('blob:')}
+              className="object-cover object-top"
+            />
+          </div>
+        )}
         <h2 className="text-headline-md font-bold leading-tight text-on-primary">{cv.name}</h2>
         <p className="mt-1 text-body-md text-on-primary/85">{cv.headline}</p>
 

@@ -6,7 +6,7 @@ import { formatRupiah, type SellerPlan } from '@/lib/data';
 /** Grid kartu paket langganan - dipakai langganan seller & paket premium rekruter. */
 export function PlanGrid({ plans }: { plans: SellerPlan[] }) {
   return (
-    <ScrollReveal as="div" stagger className="grid items-start gap-lg md:grid-cols-3">
+    <ScrollReveal as="div" stagger className="grid items-stretch gap-lg md:grid-cols-3">
       {plans.map((p) => (
         <div
           key={p.name}
