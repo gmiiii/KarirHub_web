@@ -1,6 +1,7 @@
 import { DashboardShell } from '@/components/chrome/DashboardShell';
 import { Icon } from '@/components/Icon';
-import { Button, ButtonLink } from '@/components/ui/Button';
+import { ButtonLink } from '@/components/ui/Button';
+import { ToastButton, ToggleButton } from '@/components/ui/ActionButtons';
 import { Badge } from '@/components/ui/Badge';
 import { Placeholder } from '@/components/Placeholder';
 import { myServices, services, formatRupiah } from '@/lib/data';
@@ -13,7 +14,7 @@ export default function MyServicesPage() {
       role="seller"
       title="Layanan Saya"
       subtitle="Kelola, aktifkan, atau jeda layanan yang kamu tawarkan."
-      action={<ButtonLink href="/layanan-saya" icon="add">Tambah Layanan</ButtonLink>}
+      action={<ToastButton icon="add" message="Form tambah layanan akan segera tersedia" tone="info">Tambah Layanan</ToastButton>}
     >
       <div className="space-y-md">
         {myServices.map((m) => {
@@ -33,10 +34,14 @@ export default function MyServicesPage() {
                 </div>
               </div>
               <div className="flex items-center gap-sm">
-                <Button variant="secondary" size="sm" icon="edit">Edit</Button>
-                <Button variant="ghost" size="sm" icon={m.active ? 'pause' : 'play_arrow'}>
-                  {m.active ? 'Jeda' : 'Aktifkan'}
-                </Button>
+                <ToastButton variant="secondary" size="sm" icon="edit" message={`Membuka editor untuk "${m.title}"`} tone="info">Edit</ToastButton>
+                <ToggleButton
+                  variant="ghost"
+                  size="sm"
+                  initialOn={m.active}
+                  onState={{ label: 'Jeda', icon: 'pause', message: `"${m.title}" diaktifkan` }}
+                  offState={{ label: 'Aktifkan', icon: 'play_arrow', message: `"${m.title}" dijeda` }}
+                />
               </div>
             </article>
           );

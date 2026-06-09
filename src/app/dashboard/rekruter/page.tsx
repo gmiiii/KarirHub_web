@@ -1,6 +1,7 @@
 import { DashboardShell, StatCard } from '@/components/chrome/DashboardShell';
 import { Icon } from '@/components/Icon';
 import { ButtonLink } from '@/components/ui/Button';
+import { ToastButton } from '@/components/ui/ActionButtons';
 import { Badge } from '@/components/ui/Badge';
 import { AvatarInitial } from '@/components/Placeholder';
 import { recruiterStats, applicants } from '@/lib/data';
@@ -26,7 +27,7 @@ export default function RecruiterDashboard() {
       <section className="mt-xl rounded-xl border border-outline-variant bg-surface-container-lowest">
         <div className="flex items-center justify-between border-b border-outline-variant p-lg">
           <h3 className="text-title-lg text-on-surface">Pelamar terbaru</h3>
-          <button className="text-label-md font-semibold text-primary hover:underline">Lihat semua</button>
+          <ToastButton variant="ghost" size="sm" tone="info" message="Menampilkan semua 1.248 pelamar">Lihat semua</ToastButton>
         </div>
         {/* Tabel (desktop) */}
         <div className="hidden overflow-x-auto md:block">

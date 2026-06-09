@@ -2,7 +2,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { SiteChrome } from '@/components/chrome/SiteChrome';
 import { Icon } from '@/components/Icon';
-import { ButtonLink, Button } from '@/components/ui/Button';
+import { ButtonLink } from '@/components/ui/Button';
+import { ToastButton } from '@/components/ui/ActionButtons';
 import { VerifiedBadge } from '@/components/ui/Badge';
 import { StarRating } from '@/components/ui/StarRating';
 import { Placeholder, AvatarInitial } from '@/components/Placeholder';
@@ -84,7 +85,9 @@ export default function ServiceDetailPage({ params }: { params: { id: string } }
 
                 <div className="mt-lg space-y-sm">
                   <ButtonLink href="/checkout" fullWidth icon="shopping_cart">Pesan Sekarang</ButtonLink>
-                  <Button variant="secondary" fullWidth icon="chat">Hubungi {service.seller.split(' ')[0]}</Button>
+                  <ToastButton variant="secondary" fullWidth icon="chat" tone="info" message={`Pesan terkirim ke ${service.seller}`}>
+                    Hubungi {service.seller.split(' ')[0]}
+                  </ToastButton>
                 </div>
                 <p className="mt-sm text-center text-caption text-on-surface-variant">
                   Pembayaran aman dengan Jaminan KarirHub.

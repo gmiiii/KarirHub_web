@@ -7,6 +7,7 @@ import { clsx } from '@/lib/clsx';
 import { Icon } from '../Icon';
 import { AvatarInitial } from '../Placeholder';
 import { AccountMenu } from './AccountMenu';
+import { useToast } from '../ui/Toast';
 import { useAuth, roleMeta } from '@/lib/auth';
 
 export type DashRole = 'rekruter' | 'seller';
@@ -43,6 +44,7 @@ export function DashboardShell({
 }) {
   const pathname = usePathname();
   const router = useRouter();
+  const toast = useToast();
   const { user, ready } = useAuth();
   // Tiap role independen: user yang login dengan peran lain dialihkan ke home-nya.
   // Hanya bisa masuk dashboard ini dengan berganti ke mode yang sesuai.
@@ -106,7 +108,11 @@ export function DashboardShell({
             <h1 className="text-title-lg font-semibold text-on-surface">{title}</h1>
           </div>
           <div className="flex items-center gap-sm">
-            <button aria-label="Notifikasi" className="relative rounded-full p-2 text-on-surface-variant hover:bg-surface-container-low">
+            <button
+              aria-label="Notifikasi"
+              onClick={() => toast('Belum ada notifikasi baru', 'info')}
+              className="relative rounded-full p-2 text-on-surface-variant hover:bg-surface-container-low"
+            >
               <Icon name="notifications" />
               <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-error ring-2 ring-surface-container-lowest" />
             </button>

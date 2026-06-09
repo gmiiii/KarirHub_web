@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { clsx } from '@/lib/clsx';
 import { Icon } from '@/components/Icon';
-import { Button } from '@/components/ui/Button';
+import { ButtonLink } from '@/components/ui/Button';
 import { Placeholder } from '@/components/Placeholder';
 import { PlanGrid } from '@/components/dashboard/PlanGrid';
 import {
@@ -95,9 +95,9 @@ function KreditPanel() {
               <p className="text-caption text-on-surface-variant">
                 ~ {formatRupiah(Math.round(t.price / t.credits))} / kredit
               </p>
-              <Button variant="secondary" fullWidth icon="shopping_cart" className="mt-lg">
+              <ButtonLink href="/checkout" variant="secondary" fullWidth icon="shopping_cart" className="mt-lg">
                 Beli
-              </Button>
+              </ButtonLink>
             </div>
           ))}
         </div>

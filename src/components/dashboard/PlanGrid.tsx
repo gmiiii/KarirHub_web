@@ -1,5 +1,6 @@
 import { Icon } from '@/components/Icon';
-import { Button } from '@/components/ui/Button';
+import { Button, ButtonLink } from '@/components/ui/Button';
+import { ToastButton } from '@/components/ui/ActionButtons';
 import { ScrollReveal } from '@/components/motion/ScrollReveal';
 import { formatRupiah, type SellerPlan } from '@/lib/data';
 
@@ -42,11 +43,41 @@ export function PlanGrid({ plans }: { plans: SellerPlan[] }) {
             ))}
           </ul>
 
-          <Button variant={p.highlight ? 'primary' : 'secondary'} fullWidth className="mt-lg">
-            {p.cta}
-          </Button>
+          <PlanCta plan={p} />
         </div>
       ))}
     </ScrollReveal>
+  );
+}
+
+/** CTA paket: paket aktif (nonaktif), "Hubungi Sales" (toast), selain itu menuju checkout. */
+function PlanCta({ plan }: { plan: SellerPlan }) {
+  const cta = plan.cta.toLowerCase();
+  const variant = plan.highlight ? 'primary' : 'secondary';
+
+  if (cta.includes('aktif')) {
+    return (
+      <Button variant="secondary" fullWidth className="mt-lg" disabled>
+        {plan.cta}
+      </Button>
+    );
+  }
+  if (cta.includes('hubungi')) {
+    return (
+      <ToastButton
+        variant={variant}
+        fullWidth
+        className="mt-lg"
+        tone="info"
+        message="Permintaan kontak terkirim. Tim sales akan menghubungi Anda."
+      >
+        {plan.cta}
+      </ToastButton>
+    );
+  }
+  return (
+    <ButtonLink href="/checkout" variant={variant} fullWidth className="mt-lg">
+      {plan.cta}
+    </ButtonLink>
   );
 }

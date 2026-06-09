@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { SiteChrome } from '@/components/chrome/SiteChrome';
 import { Icon } from '@/components/Icon';
-import { Button, ButtonLink } from '@/components/ui/Button';
+import { ButtonLink } from '@/components/ui/Button';
+import { ShareButton, ToastButton } from '@/components/ui/ActionButtons';
 import { Badge, VerifiedBadge } from '@/components/ui/Badge';
 import { Placeholder, AvatarInitial } from '@/components/Placeholder';
 import { cvData } from '@/lib/data';
@@ -34,8 +35,8 @@ export default function ProfilePage() {
             </p>
           </div>
           <div className="flex gap-sm">
-            <Button variant="secondary" icon="edit">Edit Profil</Button>
-            <Button icon="share">Bagikan</Button>
+            <ToastButton variant="secondary" icon="edit" message="Profil berhasil diperbarui">Edit Profil</ToastButton>
+            <ShareButton icon="share" message="Tautan profil disalin ke clipboard">Bagikan</ShareButton>
           </div>
         </div>
 
